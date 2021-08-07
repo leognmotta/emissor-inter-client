@@ -2,16 +2,15 @@ import { Layout as ALayout, Menu as AMenu } from "antd";
 import styled from "styled-components";
 
 export const Layout = styled(ALayout)`
-  height: 100%;
+  min-height: 100vh;
 `;
 
-export const SiteLayout = styled(Layout)`
+export const SiteLayout = styled(ALayout)`
   margin-left: 200px;
 `;
 
 export const Content = styled(Layout.Content)`
   margin: 24px 16px 0;
-  overflow: initial;
   margin-top: 80px;
 `;
 

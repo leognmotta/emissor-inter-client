@@ -1,5 +1,10 @@
 import BaseClient from "./BaseClient";
-import { LoginDTO } from "./interfaces";
+import {
+  LoginDTO,
+  ListarBoletosParams,
+  PaginatedBoleto,
+  Boleto,
+} from "./types";
 
 class Api extends BaseClient {
   constructor() {
@@ -25,6 +30,32 @@ class Api extends BaseClient {
   public async logout(): Promise<void> {
     try {
       await this.instance.post<void>("/session/logout");
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public async recuperarBoleto(nossoNumero: string): Promise<Boleto> {
+    const response = await this.instance.get<Boleto>(`/boletos/${nossoNumero}`);
+
+    return response;
+  }
+
+  public async listarBoletos({
+    page = 1,
+    size = 10,
+    ...rest
+  }: ListarBoletosParams): Promise<PaginatedBoleto> {
+    try {
+      const response = await this.instance.get<PaginatedBoleto>("/boletos", {
+        params: {
+          page,
+          size,
+          ...rest,
+        },
+      });
+
+      return response;
     } catch (error) {
       throw error;
     }

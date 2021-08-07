@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Api from "../api";
-import { LoginDTO } from "../api/interfaces";
+import { LoginDTO } from "../api/types";
 
 export const persistState = (storageKey: string, state: object): void => {
   window.localStorage.setItem(storageKey, JSON.stringify(state));

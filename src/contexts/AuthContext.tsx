@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 
-import { LoginDTO } from "../api/interfaces";
+import { LoginDTO } from "../api/types";
 import useAuth from "../hooks/useAuth";
 
 export type AuthContext = {

@@ -1,113 +1,100 @@
-import React from 'react';
-import PageWrapper from '../../components/PageWrapper';
-import { Table, Button, Dropdown, Menu, Statistic, Card, Row, Col } from 'antd';
-import { FaEllipsisV } from 'react-icons/fa';
+import React from "react";
+import moment from "moment";
+import { useAsync } from "react-use";
+import { Table } from "antd";
 
-const actions = [
-    {
-        title: 'Visualizar boleto',
-        action: () => {},
-    },
-    {
-        title: 'Baixar boleto',
-        action: () => {},
-    },
-    {
-        title: 'Download .pdf',
-        action: () => {},
-    },
-]
-
-const menu = (
-    <Menu>
-        {actions.map(({title, action}) => (
-            <Menu.Item key={title}>
-                <Button onClick={action} type="text">
-                    {title}
-                </Button>
-            </Menu.Item>
-        ))}
-    </Menu>
-);
-
-const columns = [
-    {
-        title: 'Boleto',
-        dataIndex: 'boleto',
-        key: 'boleto',
-    },
-    {
-        title: 'Vencimento',
-        dataIndex: 'vencimento',
-        key: 'vencimento',
-    },
-    {
-        title: 'Ações',
-        dataIndex: 'acoes',
-        key: 'acoes',
-        render: () => (
-            <Dropdown overlay={menu} trigger={['click']} >
-                <Button type="text" >
-                    <FaEllipsisV />
-                </Button>
-            </Dropdown>
-        )
-    },
-];
-
-const boletos = [
-    {
-        key: '1',
-        boleto: 'some boleto',
-        vencimento: '20/07/2021',
-    },
-    {
-        key: '2',
-        boleto: 'some boleto',
-        vencimento: '20/07/2021',
-    },
-];
-
-
+import PageWrapper from "../../components/PageWrapper";
+import { columns } from "./components/Table";
+import DashHeader from "./components/DashHeader";
+import useUrlState from "../../hooks/useUrlState";
+import Api from "../../api";
+import TableFilters from "./components/TableFilters";
+import { FiltrosBoletos, FiltrosDatas } from "../../api/types";
 
 const Dashboard: React.FC = () => {
-    return (
-      <div>
-        <Row style={{paddingBottom: 20}} >
-            <Col style={{paddingRight: 20}} span={6}>
-                <Card>
-                    <Statistic title="A receber" value={20} />
-                </Card>
-            </Col>
+  const monthStart = moment().startOf("month").format("YYYY-MM-DD");
+  const monthEnd = moment().endOf("month").format("YYYY-MM-DD");
+  const [currentPage, setCurrentPage] = useUrlState("page", "1");
+  const [currentSize, setCurrentSize] = useUrlState("size", "10");
+  const [dataInicial, setDataInicial] = useUrlState("dataInicial", monthStart);
+  const [dataFinal, setDataFinal] = useUrlState("dataFinal", monthEnd);
+  const [filtrarPor, setFiltrarPor] = useUrlState("filtrarPor", "TODOS");
+  const [filtrarDataPor, setFiltrarDataPor] = useUrlState(
+    "filtrarDataPor",
+    "VENCIMENTO"
+  );
 
-            <Col style={{padding: '0 20px'}}  span={6}>
-                <Card>
-                    <Statistic title="Recebido" value={20} />
-                </Card>
-            </Col>
+  const state = useAsync(async () => {
+    const data = await Api.listarBoletos({
+      dataInicial,
+      dataFinal,
+      filtrarPor: filtrarPor as FiltrosBoletos,
+      filtrarDataPor: filtrarDataPor as FiltrosDatas,
+      page: Number(currentPage) || 1,
+      size: Number(currentSize) || 10,
+    });
 
-            <Col style={{padding: '0 20px'}}  span={6}>
-                <Card>
-                    <Statistic title="Baixados" value={20} />
-                </Card>
-            </Col>
+    return data;
+  }, [
+    currentPage,
+    currentSize,
+    dataInicial,
+    dataFinal,
+    filtrarPor,
+    filtrarDataPor,
+  ]);
 
-            <Col style={{paddingLeft: 20}}  span={6}>
-                <Card>
-                    <Statistic title="Vencidos" value={20} />
-                </Card>
-            </Col>
-        </Row>
+  if (state.error) {
+    return <h1>Error</h1>;
+  }
 
-        <PageWrapper>
-            <Table
-                columns={columns} 
-                dataSource={boletos} 
-                pagination={{responsive: true}} 
-            />
-        </PageWrapper>
-      </div>
-    )
+  return (
+    <div>
+      <DashHeader
+        baixados={state.value?.summary.baixados}
+        expirados={state.value?.summary.expirados}
+        previstos={state.value?.summary.previstos}
+        recebidos={state.value?.summary.recebidos}
+      />
+
+      <PageWrapper>
+        <TableFilters
+          setDataFinal={setDataFinal}
+          setDataInicial={setDataInicial}
+          setFiltrarPor={setFiltrarPor}
+          setFiltrarDataPor={setFiltrarDataPor}
+          dataInicial={dataInicial}
+          dataFinal={dataFinal}
+          filtrarPor={filtrarPor}
+          filtrarDataPor={filtrarDataPor}
+        />
+
+        <Table
+          columns={columns}
+          dataSource={(state.value?.content || []).map(
+            ({ nossoNumero, ...data }) => ({
+              key: nossoNumero,
+              nossoNumero,
+              ...data,
+            })
+          )}
+          loading={state.loading}
+          pagination={{
+            responsive: true,
+            current: Number(currentPage) || 1,
+            total: state.value?.totalElements,
+            defaultCurrent: 1,
+            defaultPageSize: 10,
+            pageSize: Number(currentSize) || 10,
+            onChange: (nextPage, nextSize) => {
+              setCurrentPage(`${nextPage}`);
+              setCurrentSize(`${nextSize}`);
+            },
+          }}
+        />
+      </PageWrapper>
+    </div>
+  );
 };
 
 export default Dashboard;

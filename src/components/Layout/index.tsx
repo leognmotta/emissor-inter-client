@@ -25,7 +25,6 @@ const Layout: React.FC = ({ children }) => {
           </S.MenuItem>
         </S.Menu>
       </S.Sider>
-
       <S.SiteLayout>
         <S.Header />
 
