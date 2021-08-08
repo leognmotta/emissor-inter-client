@@ -27,6 +27,7 @@ interface Props {
   setDataFinal: (data: string) => void;
   setFiltrarPor: (data: string) => void;
   setFiltrarDataPor: (data: string) => void;
+  setModalVisible: (data: boolean) => void;
 }
 
 const displayFormat = "DD-MM-YYYY";
@@ -78,6 +79,7 @@ const TableFilters: React.FC<Props> = ({
   setDataFinal,
   setFiltrarPor,
   setFiltrarDataPor,
+  setModalVisible,
 }) => {
   const [showFilters, setShowFilters] = useState(false);
 
@@ -151,7 +153,9 @@ const TableFilters: React.FC<Props> = ({
               />
             </Tooltip>
 
-            <Button type="primary">Adicionar Boletos</Button>
+            <Button type="primary" onClick={() => setModalVisible(true)}>
+              Adicionar Boletos
+            </Button>
           </Space>
         </Col>
 

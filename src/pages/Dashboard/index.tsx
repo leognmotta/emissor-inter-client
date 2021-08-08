@@ -9,11 +9,13 @@ import DashHeader from "./components/DashHeader";
 import useUrlState from "../../hooks/useUrlState";
 import Api from "../../api";
 import TableFilters from "./components/TableFilters";
+import CriarBoletos from "../../components/CriarBoletos";
 import { FiltrosBoletos, FiltrosDatas } from "../../api/types";
 
 const Dashboard: React.FC = () => {
   const monthStart = moment().startOf("month").format("YYYY-MM-DD");
   const monthEnd = moment().endOf("month").format("YYYY-MM-DD");
+  const [visible, setVisible] = React.useState(false);
   const [currentPage, setCurrentPage] = useUrlState("page", "1");
   const [currentSize, setCurrentSize] = useUrlState("size", "10");
   const [dataInicial, setDataInicial] = useUrlState("dataInicial", monthStart);
@@ -63,6 +65,7 @@ const Dashboard: React.FC = () => {
           setDataInicial={setDataInicial}
           setFiltrarPor={setFiltrarPor}
           setFiltrarDataPor={setFiltrarDataPor}
+          setModalVisible={setVisible}
           dataInicial={dataInicial}
           dataFinal={dataFinal}
           filtrarPor={filtrarPor}
@@ -93,6 +96,8 @@ const Dashboard: React.FC = () => {
           }}
         />
       </PageWrapper>
+
+      <CriarBoletos visible={visible} setVisible={setVisible} />
     </div>
   );
 };

@@ -18,6 +18,8 @@
     "craco-less": "^1.18.0",
     "formik": "^2.2.9",
     "history": "^4.10.1",
+    "inherits": "^2.0.4",
+    "joi": "^17.4.2",
     "moment": "^2.29.1",
     "qs": "^6.10.1",
     "react": "^17.0.2",
@@ -30,6 +32,7 @@
     "react-use-url-search-state": "^1.0.0",
     "styled-components": "^5.3.0",
     "typescript": "^4.1.2",
+    "uuidv4": "^6.2.11",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
@@ -59,6 +62,8 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/inherits": "^0.0.30",
+    "@types/joi": "^17.2.3",
     "@types/qs": "^6.9.7",
     "@types/react-icons": "^3.0.0",
     "@types/react-router-dom": "^5.1.8",
