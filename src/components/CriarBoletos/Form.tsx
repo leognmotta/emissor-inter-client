@@ -2,6 +2,8 @@ import React from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import { Form, Input, Select } from "antd";
 
+import { FormContainer } from "./styles";
+
 export interface Props {
   fieldName: string;
   control: Control<FieldValues>;
@@ -11,7 +13,7 @@ const { Option } = Select;
 
 const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
   return (
-    <React.Fragment>
+    <FormContainer>
       <Controller
         name={`${fieldName}.seuNumero`}
         control={control}
@@ -591,7 +593,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
           </Form.Item>
         )}
       />
-    </React.Fragment>
+    </FormContainer>
   );
 };
 
