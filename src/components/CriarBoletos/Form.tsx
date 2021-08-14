@@ -1,21 +1,38 @@
 import React from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
-import { Form, Input } from "antd";
+import { Form, Input, Select } from "antd";
 
 export interface Props {
   fieldName: string;
   control: Control<FieldValues>;
 }
 
+const { Option } = Select;
+
 const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
+
   return (
     <React.Fragment>
+      <Controller
+        name={`${fieldName}.seuNumero`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Número do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback 
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
       <Controller
         name={`${fieldName}.cnpjCPFBeneficiario`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
-            label="Cnpj/Cpf beneficiario"
+            label="Cnpj/Cpf beneficiário"
             validateStatus={fieldState.error && "error"}
             help={fieldState.error?.message}
             hasFeedback
@@ -25,12 +42,341 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
 
-      <Controller
-        name={`${fieldName}.nomeSacado`}
+       <Controller
+        name={`${fieldName}.valorNominal`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
-            label="Nome Sacado"
+            label="Valor Nominal do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+
+        <Controller
+        name={`${fieldName}.valorAbatimento`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Valor de abatimento do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.dataEmissao`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Data de emissão do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="date" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.dataVencimento`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Data de vencimento do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="date" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.numDiasAgenda`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+          label="Dias corridos após o vencimento para baixa efetiva automática do boleto"
+          validateStatus={fieldState.error && "error"}
+          help={fieldState.error?.message}
+          hasFeedback
+        >
+           <Select
+            placeholder="Numero de Dias"
+            {...field}
+            allowClear
+          >
+            <Option id={field.value} value="0">0</Option>
+            <Option id={field.value} value="30">30</Option>
+            <Option id={field.value} value="60">60</Option>
+          </Select>
+        </Form.Item>
+        )}
+      />
+      <h1>Pagador</h1>
+      <hr/>
+      <Controller
+        name={`${fieldName}.tipoPessoaPagador`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Tipo do Pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Select
+            placeholder="FÍSICA ou JURÍDICA"
+            {...field}
+            allowClear
+          >
+            <Option id={field.value} value="juridica">JURIDICA</Option>
+            <Option id={field.value} value="fisica">FISICA</Option>
+          </Select>
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.nomePagador`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Nome da Pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.endereco`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Endereço da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.numEndereco`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Numero do endereço da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.complemento`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Complemento do endereço da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.bairro`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Bairro da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.cidade`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Cidade da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.uf`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Unidade Federativa da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.cep`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="CEP da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.cnpjCpfPagador`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="CPF/CNPJ do pagador do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.emailPagador`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="E-mail da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.dddPagador`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="DDD do telefone da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.telefonePagador`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Telefone da pessoa"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <h1>Mensagem</h1>
+      <hr/>
+
+      <Controller
+        name={`${fieldName}.linha1`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 1 do campo de texto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.linha2`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 2 do campo de texto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.linha3`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 3 do campo de texto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.linha4`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 4 do campo de texto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.linha5`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 5 do campo de texto do título"
             validateStatus={fieldState.error && "error"}
             help={fieldState.error?.message}
             hasFeedback
