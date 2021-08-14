@@ -1,16 +1,11 @@
-// import * as yup from "yup";
 import Joi from "joi";
 
-// export const formSchema = yup.object().shape({
-//   cnpjCPFBeneficiario: yup.string().required().email(),
-// });
-
-// export const schema = yup.object().shape({
-//   boletos: yup.array().of(formSchema),
-// });
+const cnpjOuCpfRegex =
+  /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/;
 
 const formSchema = Joi.object({
-  cnpjCPFBeneficiario: Joi.string().required(),
+  cnpjCPFBeneficiario: Joi.string().regex(cnpjOuCpfRegex).required(),
+  nomeSacado: Joi.string().required(),
 });
 
 export const schema = Joi.object({

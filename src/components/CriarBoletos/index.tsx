@@ -1,13 +1,15 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
+import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
-import { useForm, Controller } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { PageHeader, Space, Button, Collapse, Form, Input, Badge } from "antd";
+import { PageHeader, Space, Button, Collapse, Badge } from "antd";
 
+import BoletosForm from "./Form";
 import { schema } from "./schema";
 import { hashMapToArray } from "./util";
 import { Modal, Content, Footer } from "./styles";
+
 const { Panel } = Collapse;
 
 interface Props {
@@ -83,20 +85,7 @@ const CriarBoletos: React.FC<Props> = ({ visible, setVisible }) => {
                   </Space>
                 }
               >
-                <Controller
-                  name={`${fieldName}.cnpjCPFBeneficiario`}
-                  control={control}
-                  render={({ field, fieldState }) => (
-                    <Form.Item
-                      label="Cnpj/Cpf beneficiario"
-                      validateStatus={fieldState.error && "error"}
-                      help={fieldState.error?.message}
-                      hasFeedback
-                    >
-                      <Input {...field} id={field.name} type="text" />
-                    </Form.Item>
-                  )}
-                />
+                <BoletosForm control={control} fieldName={fieldName} />
               </Panel>
             );
           })}

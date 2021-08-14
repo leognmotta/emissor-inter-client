@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const Form = styled.form``;
-
 export const Modal = styled.form`
   position: fixed;
   width: 100vw;
