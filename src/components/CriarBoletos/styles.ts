@@ -1,6 +1,21 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.div``;
+export const FormContainer = styled.div`
+
+> h2 {
+  font-size: medium
+}
+
+> div  {
+  display: flex;
+  flex-direction: column;
+}
+
+> div > div  {
+  display: flex;
+}
+
+`;
 
 export const Modal = styled.form`
   position: fixed;

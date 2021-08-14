@@ -110,7 +110,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
             help={fieldState.error?.message}
             hasFeedback
           >
-            <Select placeholder="Numero de Dias" {...field} allowClear>
+            <Select placeholder="Numero de Dias" {...field} defaultValue="ZERO">
               <Option id={field.name} value="ZERO">
                 0
               </Option>
@@ -124,10 +124,10 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
           </Form.Item>
         )}
       />
-      <h1>Pagador</h1>
+      <h2>Pagador</h2>
       <hr />
       <Controller
-        name={`${fieldName}.tipoPessoaPagador`}
+        name={`${fieldName}.pagador.tipoPessoa`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -136,7 +136,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
             help={fieldState.error?.message}
             hasFeedback
           >
-            <Select placeholder="FÍSICA ou JURÍDICA" {...field} allowClear>
+            <Select placeholder="FÍSICA ou JURÍDICA" {...field} defaultValue="FISICA">
               <Option id={field.name} value="JURIDICA">
                 Juridica
               </Option>
@@ -148,7 +148,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.nomePagador`}
+        name={`${fieldName}.pagador.nome`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -162,7 +162,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.endereco`}
+        name={`${fieldName}.pagador.endereco`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -176,7 +176,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.numEndereco`}
+        name={`${fieldName}.pagador.edereco`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -190,7 +190,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.complemento`}
+        name={`${fieldName}.pagador.complemento`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -204,7 +204,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.bairro`}
+        name={`${fieldName}.pagador.bairro`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -218,7 +218,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.cidade`}
+        name={`${fieldName}.pagador.cidade`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -232,7 +232,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.uf`}
+        name={`${fieldName}.pagador.uf`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -246,7 +246,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.cep`}
+        name={`${fieldName}.pagador.cep`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -260,7 +260,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.cnpjCpfPagador`}
+        name={`${fieldName}.pagador.cnpjCpf`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -274,7 +274,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.emailPagador`}
+        name={`${fieldName}.pagador.email`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -288,7 +288,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.dddPagador`}
+        name={`${fieldName}.pagador.ddd`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -302,7 +302,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.telefonePagador`}
+        name={`${fieldName}.pagador.telefone`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -315,11 +315,11 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
           </Form.Item>
         )}
       />
-      <h1>Mensagem</h1>
+      <h2>Mensagem</h2>
       <hr />
 
       <Controller
-        name={`${fieldName}.linha1`}
+        name={`${fieldName}.mensagem.linha1`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -333,7 +333,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.linha2`}
+        name={`${fieldName}.mensagem.linha2`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -347,7 +347,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.linha3`}
+        name={`${fieldName}.mensagem.linha3`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -361,7 +361,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.linha4`}
+        name={`${fieldName}.mensagem.linha4`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -375,7 +375,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.linha5`}
+        name={`${fieldName}.mensagem.linha5`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -388,10 +388,10 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
           </Form.Item>
         )}
       />
-      <h1>Desconto1</h1>
+      <h2>Desconto 1</h2>
       <hr />
       <Controller
-        name={`${fieldName}.desconto`}
+        name={`${fieldName}.desconto1.codigoDesconto`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -405,7 +405,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.descontoData`}
+        name={`${fieldName}.desconto1.data`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -419,7 +419,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.descontoTaxa`}
+        name={`${fieldName}.desconto1.taxa`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -433,7 +433,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.descontoValor`}
+        name={`${fieldName}.desconto1.valor`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -446,10 +446,126 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
           </Form.Item>
         )}
       />
-      <h1>Multa</h1>
+         <h2>Desconto 2</h2>
       <hr />
       <Controller
-        name={`${fieldName}.multa.multa`}
+        name={`${fieldName}.desconto2.codigoDesconto`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Código de Desconto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.desconto2.data`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Data de Desconto do Título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="date" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.desconto2.taxa`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 5 do campo de texto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.desconto2.valor`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Valor de Desconto, expresso na moeda do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+         <h2>Desconto 3</h2>
+      <hr />
+      <Controller
+        name={`${fieldName}.desconto3.codigoDesconto`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Código de Desconto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.desconto3.data`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Data de Desconto do Título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="date" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.desconto3.taxa`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 5 do campo de texto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.desconto3.valor`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Valor de Desconto, expresso na moeda do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <h2>Multa</h2>
+      <hr />
+      <Controller
+        name={`${fieldName}.multa.codigo`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -462,7 +578,6 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
               placeholder="Código multa"
               id={field.name}
               {...field}
-              allowClear
               defaultValue="NAOTEMMULTA"
             >
               <Option id={field.name} value="NAOTEMMULTA">
@@ -479,7 +594,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.multaData`}
+        name={`${fieldName}.multa.data`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -507,7 +622,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.valorMulta`}
+        name={`${fieldName}.multa.valor`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -520,10 +635,10 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
           </Form.Item>
         )}
       />
-      <h1>Mora</h1>
+      <h2>Mora</h2>
       <hr />
       <Controller
-        name={`${fieldName}.mora`}
+        name={`${fieldName}.mora.codigo`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -536,15 +651,15 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
               placeholder="Valor da Mora"
               id={field.name}
               {...field}
-              allowClear
+              defaultValue="ISENTO"
             >
-              <Option id={field.name} value="valorDia">
+              <Option id={field.name} value="VALORDIA">
                 Valor ao dia
               </Option>
-              <Option id={field.name} value="taxaMensal">
+              <Option id={field.name} value="TAXAMENSAL">
                 Taxa mensal
               </Option>
-              <Option id={field.name} value="isento">
+              <Option id={field.name} value="ISENTO">
                 Não há mora
               </Option>
             </Select>
@@ -552,7 +667,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.moraData`}
+        name={`${fieldName}.mora.data`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -566,7 +681,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.moraTaxa`}
+        name={`${fieldName}.mora.taxa`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item
@@ -580,7 +695,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
         )}
       />
       <Controller
-        name={`${fieldName}.moraMulta`}
+        name={`${fieldName}.mora.valor`}
         control={control}
         render={({ field, fieldState }) => (
           <Form.Item

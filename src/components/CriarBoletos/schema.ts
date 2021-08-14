@@ -14,19 +14,19 @@ const formSchema = Joi.object({
   numDiasAgenda: Joi.string().required(),
   //PAGADOR
   pagador: Joi.object({
-    tipoPessoaPagador: Joi.string().required(),
-    nomePagador: Joi.string().max(100).required(),
+    tipoPessoa: Joi.string().required(),
+    nome: Joi.string().max(100).required(),
     endereco: Joi.string().max(90).required(),
-    numEndereco: Joi.string().max(10).required(),
+    numero: Joi.string().max(10).required(),
     complemento: Joi.string().max(30),
     bairro: Joi.string().max(60).required(),
     cidade: Joi.string().max(60).required(),
     uf: Joi.string().required(),
     cep: Joi.string().length(8).required(),
-    cnpjCpfPagador: Joi.string().regex(cnpjOuCpfRegex).required(),
-    emailPagador: Joi.string().max(50),
-    dddPagador: Joi.string().length(2),
-    telefonePagador: Joi.string().length(9),
+    cnpjCpf: Joi.string().regex(cnpjOuCpfRegex).required(),
+    email: Joi.string().max(50),
+    ddd: Joi.string().length(2),
+    telefone: Joi.string().length(9),
   }),
   //MENSAGEM
   mensagem: Joi.object({
@@ -38,36 +38,36 @@ const formSchema = Joi.object({
   }),
   //DESCONTOS
   desconto1: Joi.object({
-    desconto: Joi.string().required(),
-    descontoData: Joi.date().iso().required(),
-    descontoTaxa: Joi.number().required(),
-    descontoValor: Joi.number().required(),
+    codigoDesconto: Joi.string().required(),
+    data: Joi.date().iso().required(),
+    taxa: Joi.number().required(),
+    valor: Joi.number().required(),
   }),
   desconto2: Joi.object({
-    desconto: Joi.string().required(),
-    descontoData: Joi.date().iso().required(),
-    descontoTaxa: Joi.number().required(),
-    descontoValor: Joi.number().required(),
+    codigoDesconto: Joi.string().required(),
+    data: Joi.date().iso().required(),
+    taxa: Joi.number().required(),
+    valor: Joi.number().required(),
   }),
   desconto3: Joi.object({
-    desconto: Joi.string().required(),
-    descontoData: Joi.date().iso().required(),
-    descontoTaxa: Joi.number().required(),
-    descontoValor: Joi.number().required(),
+    codigoDesconto: Joi.string().required(),
+    data: Joi.date().iso().required(),
+    taxa: Joi.number().required(),
+    valor: Joi.number().required(),
   }),
   //MULTA
   multa: Joi.object({
-    multa: Joi.string().required(),
-    multaData: Joi.date().iso(),
-    multaTaxa: Joi.number().required(),
-    valorMulta: Joi.number().required(),
+    codigo: Joi.string().required(),
+    data: Joi.date().iso(),
+    taxa: Joi.number().required(),
+    valor: Joi.number().required(),
   }),
   //MORA
   mora: Joi.object({
-    mora: Joi.string().required(),
-    moraData: Joi.date().iso(),
-    moraTaxa: Joi.number().required(),
-    moraMulta: Joi.number().required(),
+    codigo: Joi.string().required(),
+    data: Joi.date().iso(),
+    taxa: Joi.number().required(),
+    valor: Joi.number().required(),
   }),
 });
 
