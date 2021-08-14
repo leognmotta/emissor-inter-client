@@ -109,13 +109,13 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
             hasFeedback
           >
             <Select placeholder="Numero de Dias" {...field} allowClear>
-              <Option id={field.name} value="0">
+              <Option id={field.name} value="ZERO">
                 0
               </Option>
-              <Option id={field.name} value="30">
+              <Option id={field.name} value="TRINTA">
                 30
               </Option>
-              <Option id={field.name} value="60">
+              <Option id={field.name} value="SESSENTA">
                 60
               </Option>
             </Select>
@@ -135,11 +135,11 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
             hasFeedback
           >
             <Select placeholder="FÍSICA ou JURÍDICA" {...field} allowClear>
-              <Option id={field.name} value="juridica">
-                JURIDICA
+              <Option id={field.name} value="JURIDICA">
+                Juridica
               </Option>
-              <Option id={field.name} value="fisica">
-                FISICA
+              <Option id={field.name} value="FISICA">
+                Fisica
               </Option>
             </Select>
           </Form.Item>
