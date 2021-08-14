@@ -114,9 +114,9 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
             {...field}
             allowClear
           >
-            <Option id={field.value} value="0">0</Option>
-            <Option id={field.value} value="30">30</Option>
-            <Option id={field.value} value="60">60</Option>
+            <Option id={field.name} value="0">0</Option>
+            <Option id={field.name} value="30">30</Option>
+            <Option id={field.name} value="60">60</Option>
           </Select>
         </Form.Item>
         )}
@@ -138,8 +138,8 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
             {...field}
             allowClear
           >
-            <Option id={field.value} value="juridica">JURIDICA</Option>
-            <Option id={field.value} value="fisica">FISICA</Option>
+            <Option id={field.name} value="juridica">JURIDICA</Option>
+            <Option id={field.name} value="fisica">FISICA</Option>
           </Select>
           </Form.Item>
         )}
@@ -382,6 +382,198 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
             hasFeedback
           >
             <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+      <h1>Desconto1</h1>
+      <hr/>
+      <Controller
+        name={`${fieldName}.desconto`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Código de Desconto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="text" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.descontoData`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Data de Desconto do Título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="date" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.descontoTaxa`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Linha 5 do campo de texto do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.descontoValor`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Valor de Desconto, expresso na moeda do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <h1>Multa</h1>
+      <hr/>
+      <Controller
+        name={`${fieldName}.multa`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+          label="Código de Multa do título"
+          validateStatus={fieldState.error && "error"}
+          help={fieldState.error?.message}
+          hasFeedback
+        >
+           <Select
+            placeholder="Numero de Dias"
+            id={field.name}
+            {...field}
+            allowClear
+          >
+            <Option id={field.name} value="semMulta">Não tem multa</Option>
+            <Option id={field.name} value="valorFixo">Valor Fixo</Option>
+            <Option id={field.name} value="percentual">Percentual</Option>
+          </Select>
+        </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.multaData`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Data da multa do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="date" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.multaTaxa`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Taxa Percentual de Multa do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.valorMulta`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Valor de Multa expresso na moeda do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <h1>Mora</h1>
+      <hr/>
+      <Controller
+        name={`${fieldName}.mora`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+          label="Código de Mora do título"
+          validateStatus={fieldState.error && "error"}
+          help={fieldState.error?.message}
+          hasFeedback
+        >
+           <Select
+            placeholder="Valor da Mora"
+            id={field.name}
+            {...field}
+            allowClear
+          >
+            <Option id={field.name} value="valorDia">Valor ao dia</Option>
+            <Option id={field.name} value="taxaMensal">Taxa mensal</Option>
+            <Option id={field.name} value="isento">Não há mora</Option>
+          </Select>
+        </Form.Item>
+        )}
+      />
+       <Controller
+        name={`${fieldName}.moraData`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Data da Mora do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="date" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.moraTaxa`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Taxa Percentual de Mora do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
+          </Form.Item>
+        )}
+      />
+      <Controller
+        name={`${fieldName}.moraMulta`}
+        control={control}
+        render={({ field, fieldState }) => (
+          <Form.Item
+            label="Valor de Mora expresso na moeda do título"
+            validateStatus={fieldState.error && "error"}
+            help={fieldState.error?.message}
+            hasFeedback
+          >
+            <Input {...field} id={field.name} type="number" />
           </Form.Item>
         )}
       />

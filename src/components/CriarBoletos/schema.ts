@@ -38,7 +38,16 @@ const formSchema = Joi.object({
   descontoData: Joi.date().iso().required(),
   descontoTaxa: Joi.number().required(),
   descontoValor: Joi.number().required(),
-
+  //MULTA
+  multa: Joi.string().required(),
+  multaData: Joi.date().iso(),
+  multaTaxa: Joi.number().required(),
+  valorMulta: Joi.number().required(),
+  //MORA
+  mora: Joi.string().required(),
+  moraData: Joi.date().iso(),
+  moraTaxa: Joi.number().required(),
+  moraMulta: Joi.number().required(),
  
 });
 
