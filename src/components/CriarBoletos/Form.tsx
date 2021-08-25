@@ -46,7 +46,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="text" />
+							<Input {...field} id={field.name} placeholder="99.999.999 ou 9999-99" type="text" />
 						</Form.Item>
 					)}
 				/>
@@ -61,7 +61,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -76,7 +76,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -118,7 +118,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Select placeholder="Numero de Dias" {...field} defaultValue="ZERO">
+							<Select {...field} defaultValue="ZERO">
 								<Option id={field.name} value="ZERO">
 									0
 								</Option>
@@ -149,7 +149,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Select placeholder="FÍSICA ou JURÍDICA" {...field} defaultValue="FISICA">
+							<Select {...field} defaultValue="FISICA">
 								<Option id={field.name} value="JURIDICA">
 									Juridica
 								</Option>
@@ -254,7 +254,89 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="text" />
+							<Select id={field.name} {...field} defaultValue="DF">
+								<Option id={field.name} value="AC">
+									Acre
+								</Option>
+								<Option id={field.name} value="AL">
+									Alagoas
+								</Option>
+								<Option id={field.name} value="AP">
+									Amapá
+								</Option>
+								<Option id={field.name} value="AM">
+									Amazonas
+								</Option>
+								<Option id={field.name} value="BA">
+									Bahia
+								</Option>
+								<Option id={field.name} value="CE">
+									Ceará
+								</Option>
+								<Option id={field.name} value="DF">
+									Distrito Federal
+								</Option>
+								<Option id={field.name} value="ES">
+									Espírito Santo
+								</Option>
+								<Option id={field.name} value="GO">
+									Goiás
+								</Option>
+								<Option id={field.name} value="MA">
+									Maranhão
+								</Option>
+								<Option id={field.name} value="MT">
+									Mato Grosso
+								</Option>
+								<Option id={field.name} value="MS">
+									Mato Grosso do Sul
+								</Option>
+								<Option id={field.name} value="MG">
+									Minas Gerais
+								</Option>
+								<Option id={field.name} value="PA">
+									Pará
+								</Option>
+								<Option id={field.name} value="PB">
+									Paraíba
+								</Option>
+								<Option id={field.name} value="PR">
+									Paraná
+								</Option>
+								<Option id={field.name} value="PE">
+									Pernambuco
+								</Option>
+								<Option id={field.name} value="PI">
+									Piauí
+								</Option>
+								<Option id={field.name} value="RJ">
+									Rio de Janeiro
+								</Option>
+								<Option id={field.name} value="RN">
+									Rio Grande do Norte
+								</Option>
+								<Option id={field.name} value="RS">
+									Rio Grande do Sul
+								</Option>
+								<Option id={field.name} value="RO">
+									Rondônia
+								</Option>
+								<Option id={field.name} value="RR">
+									Roraima
+								</Option>
+								<Option id={field.name} value="SC">
+									Santa Catarina
+								</Option>
+								<Option id={field.name} value="SP">
+									São Paulo
+								</Option>
+								<Option id={field.name} value="SE">
+									Sergipe
+								</Option>
+								<Option id={field.name} value="TO">
+									Tocantins
+								</Option>
+							</Select>
 						</Form.Item>
 					)}
 				/>
@@ -305,7 +387,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 					control={control}
 					render={({ field, fieldState }) => (
 						<Form.Item
-							label="DDD do telefone da pessoa"
+							label="DDD do telefone"
 							validateStatus={fieldState.error && "error"}
 							help={fieldState.error?.message}
 							hasFeedback
@@ -450,7 +532,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -464,7 +546,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -506,7 +588,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -520,7 +602,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -562,7 +644,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -576,7 +658,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -597,12 +679,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Select
-								placeholder="Código multa"
-								id={field.name}
-								{...field}
-								defaultValue="NAOTEMMULTA"
-							>
+							<Select id={field.name} {...field} defaultValue="NAOTEMMULTA">
 								<Option id={field.name} value="NAOTEMMULTA">
 									Não tem multa
 								</Option>
@@ -640,7 +717,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -654,7 +731,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -675,7 +752,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Select placeholder="Valor da Mora" id={field.name} {...field} defaultValue="ISENTO">
+							<Select id={field.name} {...field} defaultValue="ISENTO">
 								<Option id={field.name} value="VALORDIA">
 									Valor ao dia
 								</Option>
@@ -713,7 +790,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
@@ -727,7 +804,7 @@ const CriarBoletos: React.FC<Props> = ({ fieldName, control }) => {
 							help={fieldState.error?.message}
 							hasFeedback
 						>
-							<Input {...field} id={field.name} type="number" />
+							<Input {...field} id={field.name} defaultValue={0} type="number" />
 						</Form.Item>
 					)}
 				/>
